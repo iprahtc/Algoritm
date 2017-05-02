@@ -1,9 +1,9 @@
 <?php
 	for($i = 0; $i<filesize('output.txt'); $i++){
 		$sum = 0;
-		$file = file_get_contents('output.txt', NULL, NULL, $i, 11);
+		$file = file_get_contents('output.txt', NULL, NULL, $i, 101);
 		//echo $file."</br>";
-		$i += 10;
+		$i += 100;
 		$L = str_split($file);
 		//echo "L = ";print_r($L);echo "</br>";
 		$A = array_unique($L);

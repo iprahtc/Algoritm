@@ -1,7 +1,7 @@
 <?php
 	for($i = 0 ; $i < filesize('input.txt'); $i++){
 		$final_str = "";
-		$file = file_get_contents('input.txt', NULL, NULL, $i, 10);
+		$file = file_get_contents('input.txt', NULL, NULL, $i, 100);
 		$file .= "ÿ";
 		$arr = str_split($file);
 		$a[0] = $file;
@@ -15,7 +15,7 @@
 		{
 			$final_str.= $b[strlen($file)-1];
 		}
-		$i+=9;
+		$i+=99;
 		unset($a);
 		file_put_contents('output.txt', $final_str, FILE_APPEND);
 	}
