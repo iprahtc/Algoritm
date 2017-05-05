@@ -13,7 +13,7 @@
 	$number = decbin($number);
 	$ost = strlen($number)%8;
 	for($i = 0; $i < $ost; $i++)
-		$number.="0";
+		$number .= "0";
 	for($i = 1 ; $i <= strlen($number); $i++){
 		$buf .= $number[$i-1];
 		if((strlen($buf)%8) == 0){

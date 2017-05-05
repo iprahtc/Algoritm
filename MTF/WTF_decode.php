@@ -1,6 +1,17 @@
 <?php
 	$file = file_get_contents("output.txt");
-	$file = str_split($file);
+	$len_alphabet = (int)$file;
+	$alphabet = substr($file, strlen($len_alphabet), $len_alphabet);
+	for($i = (strlen($len_alphabet)+strlen($alphabet)); $i<strlen($file); $i++){
+		$final .= chr(ord($file[$i]));
+		//echo $final." ";
+	}
+	echo $final;
+	file_put_contents('final.txt', $final);
+	
+	
+	
+	/* $file = str_split($file);
 	$A = array_unique($file);
 	sort($A);
 	$A = implode($A);
@@ -20,6 +31,6 @@
 			$final .= chr(bindec($buf));
 			$buf = "";
 		}
-	}
+	} */
 	file_put_contents('final.txt', $final);
 ?>
