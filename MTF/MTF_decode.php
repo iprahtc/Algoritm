@@ -1,14 +1,19 @@
 <?php
+	//Converting a String from a File to an Array
 	$file = file_get_contents("output.txt");
 	$fil = str_split($file);
+	
+	//Getting an ascii table in a string
 	for($i = 0; $i < 255; $i++){
-		$ascii .= chr($i);
 		$asciiF .= chr($i);
 	}
+	
+	//Position coding
 	foreach($fil as $f){
-		$number = strpos($ascii, $f);
-		$final .= $asciiF[$number];
-		$ascii = $f . str_replace($f, "", $ascii);
+		$final .= $asciiF[ord($f)];
+		$asciiF = $asciiF[ord($f)] . str_replace($asciiF[ord($f)], "", $asciiF);
 	}
-	file_put_contents('final.txt', $final);
+	
+	//file_put_contents('final.txt', $final);
+	file_put_contents('jquery-3.2.2.slim.js', $final);
 ?>
