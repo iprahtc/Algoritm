@@ -1,0 +1,60 @@
+<input id="str" style="width: 100%"><p>
+<input type="button" value="Code / Decode" onclick="mFunc ()">
+<p id="prc"></p>
+<script>
+function mFunc ()
+{
+	//получаем значение с формы
+	var O = document.getElementById ('str'), S = O.value;
+	if (!S.length) {
+		alert ('Нет строки'); 
+		O.focus (); 
+		return
+		}
+		
+	if (S.replace (/[A-Z0-9]/gi, '').length) {
+		alert ('Недопустимые символы'); 
+		O.select (); 
+		return
+	}
+
+	var R = new Array ();
+
+
+	if (!S.replace (/[A-Z]/gi, '').length){
+	   for (var j = m = L = 0, T = S.split (''), lj = T.length, K = T [0]; j < lj; j++){
+	   if (K == T [j]) 
+			L++; 
+		else {
+			R [m++] = ((L < 2) ? '' : L) + K; 
+			K = T [j]; L = 1}
+		}
+	   R [m] = ((L < 2) ? '' : L) + K;
+	   var ISH = S.length, REZ = 0; 
+	}
+	else //decoding
+	{
+	   var A = S.match (/\d+[a-z]/gi);
+	   for (var j = z = m = 0, lj = A.length; j < lj; j++){
+		  var q = '', s = A [j].replace (/\d/g, '')
+		  
+		  for (var k = 0, lk = A [j].replace (/\D/g, '') * 1; k < lk; k++) 
+			q += s;
+			
+		  var t = S.substr (z).split (A [j]);
+		  R [m++] = t [0] + q; 
+		  z += t [0].length + A [j].length;
+		}
+	   var ISH = 0, REZ = S.length;
+	}
+	O.value = R.join ('');
+	if (!ISH) 
+		ISH = O.value.length; 
+	else 
+		REZ = O.value.length;
+	var txt  = 'До сжатия - ' + ISH + ' симв. (100.00%)';
+		txt += '<br>После сжатия - ' + REZ + ' симв. (';
+		txt += (REZ * 100 / ISH).toFixed (2) + '%)';
+	document.getElementById ('prc').innerHTML = txt;
+}
+</script>
